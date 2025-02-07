@@ -2,16 +2,20 @@ const downloadSpeeds = [];
 const uploadSpeeds = [];
 const pings = [];
 
-// Function to initialize graphs
-function initializeGraphs() {
-    // Assuming you have a function to create your charts
-    updateGraphs({ downloadSpeed: 0, uploadSpeed: 0, ping: 0 }); // Initialize with zero values
+// Function to initialize graphs with the last result
+async function initializeGraphs() {
+    const response = await fetch('/api/results');
+    const results = await response.json();
+    if (results.length > 0) {
+        const lastResult = results[results.length - 1]; // Get the last result
+        updateGraphs(lastResult); // Update graphs with the last result
+    }
 }
 
 // Load history on page load
 window.onload = async () => {
     await loadHistory(); // Load history when the page loads
-    initializeGraphs(); // Initialize graphs
+    await initializeGraphs(); // Initialize graphs with the last result
 };
 
 // Event listener for the run test button
@@ -86,7 +90,7 @@ function updateGraphs(result) {
         pings.shift();
     }
 
-    // Assuming you have a function to update your charts
+    // Update the charts with the new data
     updateChart(downloadChart, downloadSpeeds);
     updateChart(uploadChart, uploadSpeeds);
     updateChart(pingChart, pings);
