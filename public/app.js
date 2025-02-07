@@ -13,8 +13,13 @@ setInterval(runSpeedTest, 1800000);
 
 async function runSpeedTest() {
     document.getElementById('loading').style.display = 'block'; // Show loading indicator
-    const response = await fetch('/speedtest/api/test');
+    const response = await fetch('/api/test'); // Change back to the old API endpoint
     const result = await response.json();
+    
+    if (!result || !result.downloadSpeed || !result.uploadSpeed || !result.ping) {
+        throw new Error('Invalid response from speed test API');
+    }
+
     updateStats(result);
     updateGraphs(result);
     loadHistory();

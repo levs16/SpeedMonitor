@@ -1,60 +1,72 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
-    background: #f5f5f5;
+    background: #f0f4f8; /* Light background for a clean look */
     color: #333;
 }
 
 .topbar {
-    background: #00796b;
+    background: #003d47; /* Deep teal for the top bar */
     color: white;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 0; /* No rounded corners */
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 3.2em;
     margin: 0;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    font-family: 'Material Symbols Rounded', sans-serif; /* Ensure rounded font */
 }
 
 .mdc-button {
     padding: 15px 30px;
-    background: #00796b;
+    background: #009688; /* Lighter teal for buttons */
     color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 25px; /* More rounded corners */
     cursor: pointer;
     font-size: 1.2em;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
     margin: 20px auto;
-    display: block; /* Center the button */
-    max-width: 300px; /* Limit button width */
+    display: block;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .mdc-button:hover {
-    background: #004d40;
+    background: #005b50; /* Darker shade on hover */
     transform: scale(1.05);
 }
 
 .mdc-button:active {
-    transform: scale(0.95); /* Scale down the button when pressed */
-    transition: transform 0.1s; /* Quick transition for the press effect */
+    transform: scale(0.95);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Ensure three cards in one line */
     gap: 20px;
-    margin: 20px auto; /* Center the grid */
-    max-width: 800px; /* Limit grid width */
+    margin: 20px auto;
+    max-width: 900px;
 }
 
 .stat-box {
     padding: 20px;
-    border-radius: 15px;
-    background: #ffffff;
+    border-radius: 10px;
+    background: #e0f4f1; /* Light background for stat boxes */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.2s;
@@ -62,11 +74,21 @@ h1 {
 
 .stat-box:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stat-box img {
+    width: 40px; /* Increase icon size */
+    height: 40px;
+    margin-bottom: 10px; /* Add space below the icon */
+    color: #005b50; /* Deeper green for icons in the stat boxes */
+    filter: brightness(0) invert(1); /* Invert colors for better visibility */
 }
 
 .stat-box h2 {
     margin: 15px 0;
-    color: #00796b;
+    color: #005b50; /* Darker teal for text */
+    font-weight: bold;
 }
 
 .history-box {
@@ -75,25 +97,25 @@ h1 {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
-    margin: 20px auto; /* Center the history box */
-    max-width: 800px; /* Limit history box width */
-    text-align: center; /* Center the text inside the history box */
+    margin: 20px auto;
+    max-width: 900px;
+    text-align: center;
 }
 
 .history-item {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
+    flex-direction: column;
+    align-items: center;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    background: #ffffff;
+    background: #ffffff; /* White background for history items */
     margin-bottom: 10px;
     transition: background 0.3s;
 }
 
 .history-item:hover {
-    background: #b2dfdb;
+    background: #e0f2f1; /* Light color on hover */
 }
 
 .history-item .material-symbols-rounded {
@@ -107,31 +129,26 @@ h1 {
     }
 }
 
-.material-symbols-rounded {
-    vertical-align: middle;
-    line-height: 1;
-}
-
 h2 {
-    text-align: center; /* Center the heading */
+    text-align: center;
 }
 
 .graph-container {
-    display: flex; /* Use flexbox for a straight line layout */
-    justify-content: center; /* Center the cards */
-    margin: 20px auto; /* Center the graph container */
-    max-width: 800px; /* Limit the width of the graph container */
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 900px;
 }
 
 .graph-card {
-    flex: 1; /* Allow cards to grow equally */
-    margin: 0 10px; /* Add horizontal margin between cards */
-    background: #ffffff;
-    border-radius: 15px;
+    flex: 1;
+    margin: 0 10px;
+    background: white;
+    border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    min-width: 250px; /* Set a minimum width for better alignment */
+    min-width: 250px;
 }
 
 .loading {
@@ -143,23 +160,60 @@ h2 {
 
 @media (max-width: 600px) {
     .grid {
-        grid-template-columns: 1fr; /* Stack items vertically on small screens */
+        grid-template-columns: 1fr;
     }
-
     .graph-container {
-        flex-direction: column; /* Stack graph cards vertically */
+        flex-direction: column;
     }
-
     .graph-card {
-        margin: 10px 0; /* Add vertical margin between cards */
-        min-width: auto; /* Remove minimum width for smaller screens */
+        margin: 10px 0;
+        min-width: auto;
     }
-
     .mdc-button {
-        width: 100%; /* Make button full width */
+        width: 100%;
     }
-
     .stat-box {
-        margin: 10px 0; /* Add vertical margin between stat boxes */
+        margin: 10px 0;
     }
+}
+
+.spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #009688; /* Matching button color */
+    border-radius: 50%; /* Ensure the spinner is rounded */
+    width: 50px; /* Ensure width is equal to height */
+    height: 50px; /* Ensure height is equal to width */
+    animation: spin 1s linear infinite;
+    margin: 0 auto; /* Center the spinner */
+    display: block; /* Ensure it behaves like a block element */
+    position: relative; /* Position relative for better centering */
+    top: 50%; /* Adjust vertical position */
+    transform: translateY(-50%); /* Center vertically */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.graph-container h2 img,
+.history-box h2 img {
+    color: #ff5722; /* A contrasting color (orange) for icons next to chart and history text */
+    filter: brightness(0) invert(1); /* Invert colors for better visibility */
+}
+
+#downloadIcon,
+#uploadIcon,
+#pingIcon {
+    width: 24px; /* Ensure consistent width */
+    height: 24px; /* Ensure consistent height */
+    filter: brightness(0) saturate(100%) invert(20%); /* Adjust the filter for a deeper green */
+    color: #005b50; /* Set the color to a deeper green */
+}
+
+#graphIcon,
+#historyIcon {
+    width: 24px; /* Ensure consistent width */
+    height: 24px; /* Ensure consistent height */
+    filter: brightness(0) saturate(100%) invert(40%); /* Adjust the filter for a contrasting color */
 }

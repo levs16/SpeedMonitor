@@ -49,6 +49,11 @@ app.get('/api/results', (req, res) => {
     });
 });
 
+// Route to run speed test
+app.get('/api/test', async (req, res) => {
+    // Your existing speed test logic
+});
+
 // Start the server on port 80
 const PORT = 80;
 app.listen(PORT, () => {

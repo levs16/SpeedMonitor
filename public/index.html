@@ -6,35 +6,39 @@
     <title>Speed Monitor</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
     <link rel="stylesheet" href="https://unpkg.com/@material/web@latest/dist/material.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="topbar">
-        <h1><span class="material-symbols-rounded">rocket_launch</span> Internet Speed Monitor</h1>
+        <h1><img src="icons/rocket_launch.svg" alt="Rocket Launch Icon" style="vertical-align: middle; width: 40px; height: 40px;"> Internet Speed Monitor</h1>
     </div>
     <button id="runTest" class="mdc-button mdc-button--raised">
-        <span class="material-symbols-rounded">play_arrow</span> Run Speed Test
+        <img src="icons/play_arrow.svg" alt="Play Arrow Icon" style="vertical-align: middle; width: 24px; height: 24px;"> Run Speed Test
     </button>
-    <div id="loading" class="loading" style="display: none;">Running Speed Test...</div>
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        Running Speed Test...
+    </div>
     <div class="grid">
         <div class="stat-box">
-            <span class="material-symbols-rounded">download</span>
+            <img id="downloadIcon" src="icons/download.svg" alt="Download Icon">
             <h2 id="downloadSpeed">0.00 Mbps</h2>
             <p>Download Speed</p>
         </div>
         <div class="stat-box">
-            <span class="material-symbols-rounded">upload</span>
+            <img id="uploadIcon" src="icons/upload.svg" alt="Upload Icon">
             <h2 id="uploadSpeed">0.00 Mbps</h2>
             <p>Upload Speed</p>
         </div>
         <div class="stat-box">
-            <span class="material-symbols-rounded">speed</span>
+            <img id="pingIcon" src="icons/speed.svg" alt="Speed Icon">
             <h2 id="ping">0 ms</h2>
             <p>Ping</p>
         </div>
     </div>
-    <h2><span class="material-symbols-rounded">show_chart</span> Speed Graphs</h2>
+    <h2><img id="graphIcon" src="icons/show_chart.svg" alt="Show Chart Icon"> Speed Graphs</h2>
     <div class="graph-container">
         <div class="graph-card">
             <canvas id="downloadChart" width="400" height="200"></canvas>
@@ -46,7 +50,7 @@
             <canvas id="pingChart" width="400" height="200"></canvas>
         </div>
     </div>
-    <h2><span class="material-symbols-rounded">history</span> Test History</h2>
+    <h2><img id="historyIcon" src="icons/history.svg" alt="History Icon"> Test History</h2>
     <div id="history" class="history-box"></div>
     <script src="app.js"></script>
     <script>
