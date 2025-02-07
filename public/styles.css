@@ -140,3 +140,26 @@ h2 {
     color: #00796b;
     margin: 20px 0;
 }
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr; /* Stack items vertically on small screens */
+    }
+
+    .graph-container {
+        flex-direction: column; /* Stack graph cards vertically */
+    }
+
+    .graph-card {
+        margin: 10px 0; /* Add vertical margin between cards */
+        min-width: auto; /* Remove minimum width for smaller screens */
+    }
+
+    .mdc-button {
+        width: 100%; /* Make button full width */
+    }
+
+    .stat-box {
+        margin: 10px 0; /* Add vertical margin between stat boxes */
+    }
+}
