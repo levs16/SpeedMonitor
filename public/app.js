@@ -12,18 +12,27 @@ document.getElementById('runTest').addEventListener('click', async () => {
 setInterval(runSpeedTest, 1800000);
 
 async function runSpeedTest() {
+    console.log('Running speed test...'); // Log when the speed test is running
     document.getElementById('loading').style.display = 'block'; // Show loading indicator
-    const response = await fetch('/api/test'); // Change back to the old API endpoint
-    const result = await response.json();
-    
-    if (!result || !result.downloadSpeed || !result.uploadSpeed || !result.ping) {
-        throw new Error('Invalid response from speed test API');
-    }
+    try {
+        const response = await fetch('/speedtest/api/test'); // Call your server's endpoint
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        const result = await response.json();
+        console.log('Speed test result:', result); // Log the result
+        
+        if (!result || !result.downloadSpeed || !result.uploadSpeed || !result.ping) {
+            throw new Error('Invalid response from speed test API');
+        }
 
-    updateStats(result);
-    updateGraphs(result);
-    loadHistory();
-    document.getElementById('loading').style.display = 'none'; // Hide loading indicator
+        updateStats(result);
+        updateGraphs(result);
+        loadHistory();
+        document.getElementById('loading').style.display = 'none'; // Hide loading indicator
+    } catch (error) {
+        console.error('Error during speed test:', error); // Log any errors
+    }
 }
 
 function updateStats(result) {

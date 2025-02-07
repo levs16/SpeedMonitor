@@ -12,8 +12,10 @@ app.use('/speedtest', express.static('public'));
 
 // Route to run speed test
 app.get('/speedtest/api/test', async (req, res) => {
+    console.log('Speed test initiated'); // Log when the test is initiated
     try {
         const result = await speedTest({ acceptLicense: true, acceptGdpr: true });
+        console.log('Speed test result:', result); // Log the result
         const testResult = {
             timestamp: new Date(),
             downloadSpeed: result.download.bandwidth / 125000, // Convert to Mbps
