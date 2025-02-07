@@ -1,0 +1,13 @@
+{
+  "name": "speedmonitor",
+  "version": "1.0.0",
+  "description": "Simple Internet Speed Monitor",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "speedtest-net": "^2.2.0"
+  }
+}

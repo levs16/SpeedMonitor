@@ -1,0 +1,134 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.topbar {
+    background: #00796b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.mdc-button {
+    padding: 15px 30px;
+    background: #00796b;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s, transform 0.2s;
+    margin: 20px auto;
+    display: block; /* Center the button */
+    max-width: 300px; /* Limit button width */
+}
+
+.mdc-button:hover {
+    background: #004d40;
+    transform: scale(1.05);
+}
+
+.mdc-button:active {
+    transform: scale(0.95); /* Scale down the button when pressed */
+    transition: transform 0.1s; /* Quick transition for the press effect */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px auto; /* Center the grid */
+    max-width: 800px; /* Limit grid width */
+}
+
+.stat-box {
+    padding: 20px;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.stat-box h2 {
+    margin: 15px 0;
+    color: #00796b;
+}
+
+.history-box {
+    max-height: 300px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    margin: 20px auto; /* Center the history box */
+    max-width: 800px; /* Limit history box width */
+    text-align: center; /* Center the text inside the history box */
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #ffffff;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+.history-item:hover {
+    background: #b2dfdb;
+}
+
+.history-item .material-symbols-rounded {
+    margin-right: 15px;
+    font-size: 28px;
+}
+
+@media (min-width: 600px) {
+    .history-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.material-symbols-rounded {
+    vertical-align: middle;
+    line-height: 1;
+}
+
+h2 {
+    text-align: center; /* Center the heading */
+}
+
+.graph-container {
+    display: flex; /* Use flexbox for a straight line layout */
+    justify-content: center; /* Center the cards */
+    margin: 20px auto; /* Center the graph container */
+    max-width: 800px; /* Limit the width of the graph container */
+}
+
+.graph-card {
+    flex: 1; /* Allow cards to grow equally */
+    margin: 0 10px; /* Add horizontal margin between cards */
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    min-width: 250px; /* Set a minimum width for better alignment */
+}

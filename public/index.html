@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Monitor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    <link rel="stylesheet" href="https://unpkg.com/@material/web@latest/dist/material.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="topbar">
+        <h1><span class="material-symbols-rounded">rocket_launch</span> Internet Speed Monitor</h1>
+    </div>
+    <button id="runTest" class="mdc-button mdc-button--raised">
+        <span class="material-symbols-rounded">play_arrow</span> Run Speed Test
+    </button>
+    <div class="grid">
+        <div class="stat-box">
+            <span class="material-symbols-rounded">download</span>
+            <h2 id="downloadSpeed">0.00 Mbps</h2>
+            <p>Download Speed</p>
+        </div>
+        <div class="stat-box">
+            <span class="material-symbols-rounded">upload</span>
+            <h2 id="uploadSpeed">0.00 Mbps</h2>
+            <p>Upload Speed</p>
+        </div>
+        <div class="stat-box">
+            <span class="material-symbols-rounded">speed</span>
+            <h2 id="ping">0 ms</h2>
+            <p>Ping</p>
+        </div>
+    </div>
+    <h2><span class="material-symbols-rounded">show_chart</span> Speed Graphs</h2>
+    <div class="graph-container">
+        <div class="graph-card">
+            <canvas id="downloadChart" width="400" height="200"></canvas>
+        </div>
+        <div class="graph-card">
+            <canvas id="uploadChart" width="400" height="200"></canvas>
+        </div>
+        <div class="graph-card">
+            <canvas id="pingChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+    <h2><span class="material-symbols-rounded">history</span> Test History</h2>
+    <div id="history" class="history-box"></div>
+    <script src="app.js"></script>
+    <script>
+        // Initialize Material Components
+        mdc.autoInit();
+    </script>
+</body>
+</html>
