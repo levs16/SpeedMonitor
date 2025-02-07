@@ -2,20 +2,25 @@ const downloadSpeeds = [];
 const uploadSpeeds = [];
 const pings = [];
 
-// Function to initialize graphs with the last result
+// Function to initialize graphs with all results
 async function initializeGraphs() {
     const response = await fetch('/api/results');
     const results = await response.json();
     if (results.length > 0) {
-        const lastResult = results[results.length - 1]; // Get the last result
-        updateGraphs(lastResult); // Update graphs with the last result
+        // Update graphs with all results
+        results.forEach(result => {
+            updateGraphs(result);
+        });
+        // Update the stats with the last result
+        const lastResult = results[results.length - 1];
+        updateStats(lastResult);
     }
 }
 
 // Load history on page load
 window.onload = async () => {
     await loadHistory(); // Load history when the page loads
-    await initializeGraphs(); // Initialize graphs with the last result
+    await initializeGraphs(); // Initialize graphs with all results
 };
 
 // Event listener for the run test button
