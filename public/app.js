@@ -2,6 +2,9 @@ const downloadSpeeds = [];
 const uploadSpeeds = [];
 const pings = [];
 
+let lastTestTime = null; // Variable to store the last test time
+const testInterval = 1800000; // 30 minutes in milliseconds
+
 // Function to initialize graphs with all results
 async function initializeGraphs() {
     const response = await fetch('/api/results');
@@ -29,7 +32,28 @@ document.getElementById('runTest').addEventListener('click', async () => {
 });
 
 // Automatically run speed test every 30 minutes (1800000 ms)
-setInterval(runSpeedTest, 1800000);
+setInterval(runSpeedTest, testInterval);
+
+// Function to update the timer and last test time
+function updateTimer() {
+    const nextTestTimeElement = document.getElementById('nextTestTime');
+    const lastTestTimeElement = document.getElementById('lastTestTime');
+
+    // Calculate time until the next test
+    const now = new Date();
+    const nextTestTime = new Date(now.getTime() + testInterval);
+    const timeRemaining = nextTestTime - now;
+
+    // Format time remaining
+    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+    nextTestTimeElement.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+    // Update last test time
+    if (lastTestTime) {
+        lastTestTimeElement.innerText = lastTestTime.toLocaleString();
+    }
+}
 
 // Function to run speed test
 async function runSpeedTest() {
@@ -46,7 +70,9 @@ async function runSpeedTest() {
         // Update stats and graphs
         updateStats(result);
         updateGraphs(result);
-        // Do not call loadHistory here to avoid reloading history
+
+        // Update last test time
+        lastTestTime = new Date(); // Store the last test time
     } catch (error) {
         console.error('Error during speed test:', error); // Log any errors
     } finally {
@@ -196,3 +222,6 @@ const pingChart = new Chart(ctxPing, {
         }
     }
 });
+
+// Call updateTimer every second to refresh the timer display
+setInterval(updateTimer, 1000);

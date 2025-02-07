@@ -12,7 +12,16 @@
 </head>
 <body>
     <div class="topbar">
-        <h1><img src="icons/rocket_launch.svg" alt="Rocket Launch Icon" style="vertical-align: middle; width: 40px; height: 40px;"> Internet Speed Monitor</h1>
+        <h1>
+            <img src="icons/rocket_launch.svg" alt="Rocket Launch Icon" style="vertical-align: middle; width: 40px; height: 40px;"> 
+            Internet Speed Monitor
+        </h1>
+        <div id="timer" style="float: right; margin-left: 20px;">
+            Next autotest in: <span id="nextTestTime">30:00</span>
+        </div>
+        <div id="lastTest" style="float: right;">
+            Last test at: <span id="lastTestTime">N/A</span>
+        </div>
     </div>
     <button id="runTest" class="mdc-button mdc-button--raised">
         <img src="icons/play_arrow.svg" alt="Play Arrow Icon" style="vertical-align: middle; width: 24px; height: 24px;"> Run Speed Test
