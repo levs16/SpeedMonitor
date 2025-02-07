@@ -8,10 +8,10 @@ const resultsFilePath = path.join(__dirname, 'results.json');
 
 // Middleware
 app.use(express.json());
-app.use(express.static('public'));
+app.use('/speedtest', express.static('public'));
 
 // Route to run speed test
-app.get('/api/test', async (req, res) => {
+app.get('/speedtest/api/test', async (req, res) => {
     try {
         const result = await speedTest({ acceptLicense: true, acceptGdpr: true });
         const testResult = {
@@ -49,8 +49,8 @@ app.get('/api/results', (req, res) => {
     });
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
+// Start the server on port 3000
+const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server is running at http://localhost:${PORT}/speedtest`);
 });

@@ -13,7 +13,7 @@ setInterval(runSpeedTest, 1800000);
 
 async function runSpeedTest() {
     document.getElementById('loading').style.display = 'block'; // Show loading indicator
-    const response = await fetch('/api/test');
+    const response = await fetch('/speedtest/api/test');
     const result = await response.json();
     updateStats(result);
     updateGraphs(result);
