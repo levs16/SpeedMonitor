@@ -49,8 +49,8 @@ app.get('/api/results', (req, res) => {
     });
 });
 
-// Start the server on port 3000
-const PORT = 3000;
+// Start the server on port 80
+const PORT = 80;
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}/speedtest`);
 });
