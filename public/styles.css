@@ -82,7 +82,8 @@ h1 {
 
 .history-item {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -131,4 +132,11 @@ h2 {
     padding: 20px;
     text-align: center;
     min-width: 250px; /* Set a minimum width for better alignment */
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2em;
+    color: #00796b;
+    margin: 20px 0;
 }

@@ -12,11 +12,13 @@ document.getElementById('runTest').addEventListener('click', async () => {
 setInterval(runSpeedTest, 1800000);
 
 async function runSpeedTest() {
+    document.getElementById('loading').style.display = 'block'; // Show loading indicator
     const response = await fetch('/api/test');
     const result = await response.json();
     updateStats(result);
     updateGraphs(result);
     loadHistory();
+    document.getElementById('loading').style.display = 'none'; // Hide loading indicator
 }
 
 function updateStats(result) {
@@ -69,6 +71,13 @@ const downloadChart = new Chart(ctxDownload, {
             y: {
                 beginAtZero: true
             }
+        },
+        plugins: {
+            tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false
+            }
         }
     }
 });
@@ -90,6 +99,13 @@ const uploadChart = new Chart(ctxUpload, {
             y: {
                 beginAtZero: true
             }
+        },
+        plugins: {
+            tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false
+            }
         }
     }
 });
@@ -110,6 +126,13 @@ const pingChart = new Chart(ctxPing, {
         scales: {
             y: {
                 beginAtZero: true
+            }
+        },
+        plugins: {
+            tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false
             }
         }
     }
